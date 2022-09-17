@@ -5,5 +5,5 @@ import * as fs from 'fs'
 export function GetData(){
     let rawdata = fs.readFileSync('envData.json');
     let data = JSON.parse(rawdata);
-    return {data};
+    return data;
 }
