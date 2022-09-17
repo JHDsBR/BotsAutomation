@@ -14,22 +14,27 @@ jobs:
   INICIAR-BOTS:
     runs-on: windows-latest
     steps:
+      - name: teste env 
+        run: /
+          echo ${{env.TESTE}}
+          echo ${{ENV.TESTE}}
+          echo ${{secrets.TESTE}}
 
-      - name: checkout repo content
-        uses: actions/checkout@v3 # checkout the repository content to github runner.
+      # - name: checkout repo content
+      #   uses: actions/checkout@v3 # checkout the repository content to github runner.
 
-      - name: setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8 #install the python needed
-          cache: 'pip' # caching pip dependencies
+      # - name: setup python
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.8 #install the python needed
+      #     cache: 'pip' # caching pip dependencies
 
-      - name: install requirements and upload vídeo # run the run.py to get the latest data
-        env:
-          jesse: ${{env.TESTE}}
-        run: |
-          pip install -r requirements.txt
-          python main.py teste
+      # - name: install requirements and upload vídeo # run the run.py to get the latest data
+      #   env:
+      #     jesse: ${{env.TESTE}}
+      #   run: |
+      #     pip install -r requirements.txt
+      #     python main.py teste
       # - name: setup node js
       #   uses: actions/setup-node@v3
       #   with:
