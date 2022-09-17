@@ -25,11 +25,9 @@ jobs:
           cache: 'pip' # caching pip dependencies
 
       - name: install requirements and upload vídeo # run the run.py to get the latest data
-        env:
-          ENVIRONMENT_VARIABLE_NAME: ${{ secrets.TESTE }}
         run: |
           pip install -r requirements.txt
-          python main.py
+          python main.py ${{ secrets.TESTE }}
 
       # - name: setup node js
       #   uses: actions/setup-node@v3
