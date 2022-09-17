@@ -14,35 +14,20 @@ jobs:
   INICIAR-BOTS:
     runs-on: windows-latest
     steps:
-      - name: teste env 
+
+      - name: checkout repo content
+        uses: actions/checkout@v3 # checkout the repository content to github runner.
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+          cache: 'pip' # caching pip dependencies
+
+      - name: install requirements and upload vídeo # run the run.py to get the latest data
         run: |
-          echo "${{ENV.TESTE}}" | sed 's/./& /g'
-          echo "${{env.TESTE}}" | sed 's/./& /g'
-          echo ${{secrets.TESTE}} | sed 's/./& /g'
-          echo "${{env.teste}}" | sed 's/./& /g'
-          echo "${{ENV.teste}}" | sed 's/./& /g'
-          echo "${{secrets.teste}}" | sed 's/./& /g'
-          echo "${{secrets.teste2}}" | sed 's/./& /g'
-          echo "${{secrets.TESTE2}}" | sed 's/./& /g'
-          echo "${{env.teste2}}" | sed 's/./& /g'
-          echo "${{env.TESTE2}}" | sed 's/./& /g'
-          echo "${{ENV.teste2}}" | sed 's/./& /g'
-          echo "${{ENV.TESTE2}}" | sed 's/./& /g'
-      # - name: checkout repo content
-      #   uses: actions/checkout@v3 # checkout the repository content to github runner.
-
-      # - name: setup python
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: 3.8 #install the python needed
-      #     cache: 'pip' # caching pip dependencies
-
-      # - name: install requirements and upload vídeo # run the run.py to get the latest data
-      #   env:
-      #     jesse: ${{env.TESTE}}
-      #   run: |
-      #     pip install -r requirements.txt
-      #     python main.py teste
+          pip install -r requirements.txt
+          python main.py teste
       # - name: setup node js
       #   uses: actions/setup-node@v3
       #   with:
