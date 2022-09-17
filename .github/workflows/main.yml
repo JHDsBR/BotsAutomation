@@ -16,8 +16,7 @@ jobs:
     steps:
 
       - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content to github runner.
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v3 # checkout the repository content to github runner.
 
       - name: setup python
         uses: actions/setup-python@v2
@@ -30,9 +29,12 @@ jobs:
           pip install -r requirements.txt
           python main.py
 
-      - name: turn on bots # run the run.py to get the latest data
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: setup node js
+        uses: actions/setup-node@v3
         with:
           node-version: 16
+
+      - name: turn on bots # run the run.py to get the latest data
+
+      - name: turn on bots # run the run.py to get the latest data
         run: node main.js
