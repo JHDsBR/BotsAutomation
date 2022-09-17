@@ -19,6 +19,15 @@ jobs:
           echo "${{env.TESTE}}"
           echo "${{ENV.TESTE}}"
           echo "${{secrets.TESTE}}"
+          echo "${{env.teste}}"
+          echo "${{ENV.teste}}"
+          echo "${{secrets.teste}}"
+          echo "${{secrets.teste2}}"
+          echo "${{secrets.TESTE2}}"
+          echo "${{env.teste2}}"
+          echo "${{env.TESTE2}}"
+          echo "${{ENV.teste2}}"
+          echo "${{ENV.TESTE2}}"
 
       # - name: checkout repo content
       #   uses: actions/checkout@v3 # checkout the repository content to github runner.
