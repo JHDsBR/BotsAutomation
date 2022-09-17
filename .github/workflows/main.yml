@@ -25,6 +25,8 @@ jobs:
           cache: 'pip' # caching pip dependencies
 
       - name: install requirements and upload vídeo # run the run.py to get the latest data
+        with:
+          teste: 'DEBUG2'
         run: |
           pip install -r requirements.txt
           python main.py teste
