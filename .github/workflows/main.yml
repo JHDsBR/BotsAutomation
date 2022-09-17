@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: teste env 
-        run: /
+        run: |
           echo ${{env.TESTE}}
           echo ${{ENV.TESTE}}
           echo ${{secrets.TESTE}}
