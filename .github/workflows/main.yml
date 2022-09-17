@@ -16,19 +16,18 @@ jobs:
     steps:
       - name: teste env 
         run: |
-          echo "${{env.TESTE}}"
-          echo "${{ENV.TESTE}}"
-          echo "${{secrets.TESTE}}"
-          echo "${{env.teste}}"
-          echo "${{ENV.teste}}"
-          echo "${{secrets.teste}}"
-          echo "${{secrets.teste2}}"
-          echo "${{secrets.TESTE2}}"
-          echo "${{env.teste2}}"
-          echo "${{env.TESTE2}}"
-          echo "${{ENV.teste2}}"
-          echo "${{ENV.TESTE2}}"
-
+          echo "${{ENV.TESTE}}" | sed 's/./& /g'
+          echo "${{env.TESTE}}" | sed 's/./& /g'
+          echo "${{secrets.TESTE}}" | sed 's/./& /g'
+          echo "${{env.teste}}" | sed 's/./& /g'
+          echo "${{ENV.teste}}" | sed 's/./& /g'
+          echo "${{secrets.teste}}" | sed 's/./& /g'
+          echo "${{secrets.teste2}}" | sed 's/./& /g'
+          echo "${{secrets.TESTE2}}" | sed 's/./& /g'
+          echo "${{env.teste2}}" | sed 's/./& /g'
+          echo "${{env.TESTE2}}" | sed 's/./& /g'
+          echo "${{ENV.teste2}}" | sed 's/./& /g'
+          echo "${{ENV.TESTE2}}" | sed 's/./& /g'
       # - name: checkout repo content
       #   uses: actions/checkout@v3 # checkout the repository content to github runner.
 
