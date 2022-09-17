@@ -1,0 +1,33 @@
+name: BOTS
+
+on:
+  push:
+    branches: [ "master" ]
+#   pull_request:
+#     branches: [ "master" ]
+  schedule: # execute every day at 9am utc (6am rio tinto)
+    - cron: "0 9 * * *"
+
+  workflow_dispatch:
+
+jobs:
+  INICIAR-BOTS:
+    runs-on: windows-latest
+    steps:
+
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+          cache: 'pip' # caching pip dependencies
+
+      - name: install requirements and upload vídeo # run the run.py to get the latest data
+        run: |
+          pip install -r requirements.txt
+          python main.py
+
+      - name: turn on bots # run the run.py to get the latest data
+        run: node main.js
