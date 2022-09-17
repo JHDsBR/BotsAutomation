@@ -5,4 +5,4 @@ import sys
 # shareData.CreateData("TESTE", "DEBUG") # funcionou 😎
 
 print(sys.argv)
-print(os.environ)
+print(os.environ["GITHUB_ENV"])
