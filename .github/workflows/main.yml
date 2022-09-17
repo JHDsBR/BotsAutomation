@@ -18,21 +18,21 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v3 # checkout the repository content to github runner.
 
-      - name: setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8 #install the python needed
-          cache: 'pip' # caching pip dependencies
-
-      - name: install requirements and upload vídeo # run the run.py to get the latest data
-        run: |
-          pip install -r requirements.txt
-          python main.py
-
-      # - name: setup node js
-      #   uses: actions/setup-node@v3
+      # - name: setup python
+      #   uses: actions/setup-python@v2
       #   with:
-      #     node-version: 16
+      #     python-version: 3.8 #install the python needed
+      #     cache: 'pip' # caching pip dependencies
+
+      # - name: install requirements and upload vídeo # run the run.py to get the latest data
+      #   run: |
+      #     pip install -r requirements.txt
+      #     python main.py
+
+      - name: setup node js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
       # - name: turn on bots # run the run.py to get the latest data
       #   run: node main.js
