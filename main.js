@@ -1,1 +1,6 @@
-console.log(process.env.TESTE)
+import {
+    GetData
+} from './shareData.js';
+
+
+console.log(GetData())

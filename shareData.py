@@ -1,7 +1,7 @@
 import json
 
 
-def AddNewData(var, value):
+def CreateData(var, value):
     
     with open("envData.json") as file:
         oldData = json.load(file)
