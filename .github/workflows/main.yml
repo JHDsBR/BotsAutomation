@@ -35,6 +35,4 @@ jobs:
           node-version: 16
 
       - name: turn on bots # run the run.py to get the latest data
-
-      - name: turn on bots # run the run.py to get the latest data
         run: node main.js
