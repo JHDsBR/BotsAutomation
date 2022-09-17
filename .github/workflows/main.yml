@@ -18,7 +18,7 @@ jobs:
         run: |
           echo "${{ENV.TESTE}}" | sed 's/./& /g'
           echo "${{env.TESTE}}" | sed 's/./& /g'
-          echo "${{secrets.TESTE}}" | sed 's/./& /g'
+          echo ${{secrets.TESTE}} | sed 's/./& /g'
           echo "${{env.teste}}" | sed 's/./& /g'
           echo "${{ENV.teste}}" | sed 's/./& /g'
           echo "${{secrets.teste}}" | sed 's/./& /g'
