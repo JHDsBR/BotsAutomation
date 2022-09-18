@@ -26,18 +26,13 @@ jobs:
           cache: 'pip' # caching pip dependencies
 
       - name: install requirements and upload vídeo # run the run.py to get the latest data
-        env:
-          GMAIL_FROM: ${{secrets.GMAIL_FROM}}
-          GMAIL_FROM_PASSWORD: ${{secrets.GMAIL_FROM_PASSWORD}}
-          GMAIL_TO: ${{secrets.GMAIL_TO}}
-          TESTE: ${{secrets.TESTE}}
         run: |
           pip install -r requirements.txt
           python main.py
-      - name: setup node js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+      # - name: setup node js
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 16
 
-      - name: turn on bots # run the run.py to get the latest data
-        run: node main.js
+      # - name: turn on bots # run the run.py to get the latest data
+      #   run: node main.js
