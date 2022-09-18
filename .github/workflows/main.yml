@@ -26,9 +26,9 @@ jobs:
 
       - name: install requirements and upload vídeo # run the run.py to get the latest data
         env:
-          GMAIL_FROM: "${{GMAIL_FROM}}"
-          GMAIL_FROM_PASSWORD: "${{GMAIL_FROM_PASSWORD}}"
-          GMAIL_TO: "${{GMAIL_TO}}"
+          GMAIL_FROM: ${{secrets.GMAIL_FROM}}
+          GMAIL_FROM_PASSWORD: ${{secrets.GMAIL_FROM_PASSWORD}}
+          GMAIL_TO: ${{secrets.GMAIL_TO}}
         run: |
           pip install -r requirements.txt
           python main.py
