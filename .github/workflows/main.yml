@@ -31,11 +31,9 @@ jobs:
           GMAIL_FROM_PASSWORD: ${{secrets.GMAIL_FROM_PASSWORD}}
           GMAIL_TO: ${{secrets.GMAIL_TO}}
           TESTE: ${{secrets.TESTE}}
-        if:  env.TESTE == 'teste'
-        run: echo "I know what the secret token is!"
-        # run: |
-          # pip install -r requirements.txt
-          # python main.py
+        run: |
+          pip install -r requirements.txt
+          python main.py
       # - name: setup node js
       #   uses: actions/setup-node@v3
       #   with:

@@ -1,4 +1,4 @@
-import loadEnv 
+# import loadEnv 
 
 import os
 import shareData
@@ -15,5 +15,5 @@ print(os.environ)
 print("\n\n")
 # print(os.environ["MINHA_CHAVE"])
 # print("-",os.environ["JESSE"])
-print(os.environ["ENV"])
+# print(os.environ["ENV"])
 
