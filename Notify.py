@@ -16,9 +16,9 @@ import smtplib
 """
 
 
-GMAIL_FROM          = env["GMAIL_FROM"]
-GMAIL_FROM_PASSWORD = env["GMAIL_FROM_PASSWORD"]
-GMAIL_TO            = env["GMAIL_TO"]
+GMAIL_FROM          = env["GMAIL_FROM"].decode("utf-8")
+GMAIL_FROM_PASSWORD = env["GMAIL_FROM_PASSWORD"].decode("utf-8")
+GMAIL_TO            = env["GMAIL_TO"].decode("utf-8")
 
 
 def SendEmail(assunto:str, relatorio:str, _from=None, _from_password=None, _to=None):
