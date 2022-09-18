@@ -29,7 +29,7 @@ jobs:
           GMAIL_FROM: ${{secrets.GMAIL_FROM}}
           GMAIL_FROM_PASSWORD: ${{secrets.GMAIL_FROM_PASSWORD}}
           GMAIL_TO: ${{secrets.GMAIL_TO}}
-          TESTE: ${{ secrets.TESTE }}
+          TESTE: "teste"
         if:  env.TESTE == 'teste'
         run: echo "I know what the secret token is!"
         # run: |
