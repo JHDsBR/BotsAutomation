@@ -13,6 +13,7 @@ on:
 jobs:
   INICIAR-BOTS:
     runs-on: windows-latest
+    environment: env  # THIS WAS MISSING
     steps:
 
       - name: checkout repo content
@@ -26,10 +27,10 @@ jobs:
 
       - name: install requirements and upload vídeo # run the run.py to get the latest data
         env:
-          GMAIL_FROM: ${{env.GMAIL_FROM}}
+          GMAIL_FROM: ${{secrets.GMAIL_FROM}}
           GMAIL_FROM_PASSWORD: ${{secrets.GMAIL_FROM_PASSWORD}}
           GMAIL_TO: ${{secrets.GMAIL_TO}}
-          TESTE: "teste"
+          TESTE: ${{secrets.TESTE}}
         if:  env.TESTE == 'teste'
         run: echo "I know what the secret token is!"
         # run: |
