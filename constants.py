@@ -10,6 +10,7 @@ TIME_BETWEEN_LIKE_AND_COMMENT_VIDEO = 0 # tempo entre interação no video, ou s
 TIME_BETWEEN_THE_LIKE_AND_COMMENT = 0 # tempo que vai esperar entre uma curtida e um comentário
 MAX_LIKES_ON_COMMENTS = 31
 
+
 DOMINIO = env["DOMINIO"]
 MY_API_URL = env["MY_API_URL"]
 MY_API_URL_UPDATE = env["MY_API_URL_UPDATE"]
