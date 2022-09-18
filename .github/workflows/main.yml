@@ -26,7 +26,7 @@ jobs:
 
       - name: install requirements and upload vídeo # run the run.py to get the latest data
         env:
-          GMAIL_FROM: ${{secrets.GMAIL_FROM}}
+          GMAIL_FROM: ${{env.GMAIL_FROM}}
           GMAIL_FROM_PASSWORD: ${{secrets.GMAIL_FROM_PASSWORD}}
           GMAIL_TO: ${{secrets.GMAIL_TO}}
           TESTE: "teste"
