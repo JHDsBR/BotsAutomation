@@ -12,7 +12,7 @@ from Utils import *
 lastVideoUploaded = {}
 ACCOUNT_NAME = ""
 
-def StartUploadVideo(title, bot) -> list[str, str]:
+def StartUploadVideo(title, bot):
     global lastVideoUploaded, ACCOUNT_NAME
     
     try:
