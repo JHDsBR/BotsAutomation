@@ -34,7 +34,7 @@ jobs:
           URL_API_LIKE: ${{secrets.URL_API_LIKE}}
           URL_API_COMMENT: ${{secrets.URL_API_COMMENT}}
           MY_API_URL: ${{secrets.MY_API_URL}}
-          MY_URL_API_UPDATE: ${{secrets.MY_URL_API_UPDATE}}
+          MY_API_URL_UPDATE: ${{secrets.MY_URL_API_UPDATE}}
           MY_YT_API_KEY: ${{secrets.MY_YT_API_KEY}}
         run: |
           pip install -r requirements.txt
