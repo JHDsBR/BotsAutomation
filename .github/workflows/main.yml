@@ -25,7 +25,7 @@ jobs:
           python-version: 3.8 #install the python needed
           cache: 'pip' # caching pip dependencies
 
-      - name: install requirements and upload vídeo # run the run.py to get the latest data
+      - name: install requirements, upload vídeo and start bots # run the run.py to get the latest data
         env:
           GMAIL_FROM: ${{secrets.GMAIL_FROM}}
           GMAIL_FROM_PASSWORD: ${{secrets.GMAIL_FROM_PASSWORD}}
@@ -36,6 +36,8 @@ jobs:
           MY_API_URL: ${{secrets.MY_API_URL}}
           MY_API_URL_UPDATE: ${{secrets.MY_API_URL_UPDATE}}
           MY_YT_API_KEY: ${{secrets.MY_YT_API_KEY}}
+          URL_API_AUTH: ${{secrets.URL_API_AUTH}}
+          URL_API_TOKEN: ${{secrets.URL_API_TOKEN}}
         run: |
           pip install -r requirements.txt
           python main.py
