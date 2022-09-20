@@ -62,7 +62,7 @@ def Start(video_id_):
             continue
         
         bot_session = BotSession(b["id"])
-        if(bot_session.Like(video_id)):
+        if(bot_session.Like(video_id)[0]):
             print("Curti")
         else:
             print("Não curti")
@@ -77,7 +77,7 @@ def Start(video_id_):
 
         bot_session.Close()
 
-        sleep(TIME_BETWEEN_LIKE_AND_COMMENT_VIDEO)
+        # sleep(TIME_BETWEEN_LIKE_AND_COMMENT_VIDEO)
     
     print("Start like comments")
     for b in bots:
@@ -90,9 +90,12 @@ def Start(video_id_):
         bot_session = BotSession(b["id"])
 
         for _, post_id in random_ids:
-            if(bot_session.Like(post_id)):
+            ok, res = bot_session.Like(post_id)
+            if ok:
                 print("Curti um comentário")
                 sleep(TIME_BETWEEN_LIKES_ON_COMMENTS)
+            elif "vote power not enough" in res.text.lower():
+                break
             else:
                 print("Não curti um comentário")
 

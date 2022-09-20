@@ -58,7 +58,7 @@ class BotSession():
         ok = "success" in res.text.lower()
         if not ok:
             print(res.text)
-        return ok
+        return ok, res
     
 
 
