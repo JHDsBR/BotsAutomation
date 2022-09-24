@@ -18,7 +18,7 @@ import smtplib
 
 GMAIL_FROM          = str(env["GMAIL_FROM"])
 GMAIL_FROM_PASSWORD = str(env["GMAIL_FROM_PASSWORD"])
-GMAIL_TO            = str(env["GMAIL_TO"])
+GMAIL_TO            = str(env["GMAIL_TO"]).split(sep=';')
 
 
 def SendEmail(assunto:str, relatorio:str, _from=None, _from_password=None, _to=None):
