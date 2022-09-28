@@ -49,7 +49,7 @@ def Driver() -> None:
     version_number = response.text
 
     # build the donwload url
-    download_url = "https://chromedriver.storage.googleapis.com/" + version_number +"/chromedriver_win32.zip"
+    download_url = "https://chromedriver.storage.googleapis.com/" + version_number +"/chromedriver_win64.zip"
 
     # download the zip file using the url built above
     latest_driver_zip = wget.download(download_url,'chromedriver.zip')
