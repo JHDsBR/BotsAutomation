@@ -31,9 +31,12 @@ class BotSession():
 
     # necessário fazer login antes
     def GetTokenCSRF(self):
+        data = self.session.get(env["URL_API_TOKEN"]).json()
         try:
-            return self.session.get(env["URL_API_TOKEN"]).json()["data"]["token"]
-        except:
+            return data["data"]["token"]
+        except Exception as e:
+            print("Error ->", e)
+            print(data)
             return ""
 
 
