@@ -18,7 +18,8 @@ import xmltodict
 def Video() -> str:
     folder = "./Videos"
     video_name = "VIID.mp4"
-    while True:
+    # while True:
+    for c in range(25):
         try:
             try:
                 print("baixando vídeo")
@@ -30,9 +31,10 @@ def Video() -> str:
             a=1/0 #! erro proposital
         except:
             print("pegando novo link")
+            v_title = None
             try:
                 r = Search(choice(["meme brasil", "gato fofinho", "cachorro engraçado"]))
-                print(r.text)
+                # print(r.text)
                 r = r.json()
                 print(r)
                 items = choice(r["items"])
@@ -41,7 +43,11 @@ def Video() -> str:
                 link = f"https://www.youtube.com/watch?v={v_id}"
             except Exception as e:
                 print("erro na hora de pegar um link ->", str(e))
-                
+    
+    if not v_title:
+        print("vídeo não baixado")
+        return 
+
     print("vídeo baixado")
     return str(v_title)
 
