@@ -32,7 +32,9 @@ def Video() -> str:
             print("pegando novo link")
             try:
                 r = Search(choice(["meme brasil", "gato fofinho", "cachorro engraçado"]))
+                print(r.text)
                 r = r.json()
+                print(r)
                 items = choice(r["items"])
                 v_id = items["id"]["videoId"]
                 v_title = items["snippet"]["title"]

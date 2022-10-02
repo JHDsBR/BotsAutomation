@@ -1,8 +1,8 @@
 name: BOTS
 
 on:
-  # push:
-    # branches: [ "master" ]
+  push:
+    branches: [ "master" ]
   # pull_request:
     # branches: [ "master" ]
   schedule: # execute every day at 9am utc (6am rio tinto)
