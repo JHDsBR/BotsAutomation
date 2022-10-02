@@ -19,7 +19,7 @@ def Video() -> str:
     folder = "./Videos"
     video_name = "VIID.mp4"
     # while True:
-    for c in range(25):
+    for c in range(5):
         try:
             try:
                 print("baixando vídeo")
@@ -34,7 +34,7 @@ def Video() -> str:
             v_title = None
             try:
                 r = Search(choice(["meme brasil", "gato fofinho", "cachorro engraçado"]))
-                # print(r.text)
+                print(r.text)
                 r = r.json()
                 print(r)
                 items = choice(r["items"])
