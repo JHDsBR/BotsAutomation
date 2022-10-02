@@ -34,9 +34,9 @@ def Video() -> str:
             v_title = None
             try:
                 r = Search(choice(["meme brasil", "gato fofinho", "cachorro engraçado"]))
-                print(r.text)
+                # print(r.text)
                 r = r.json()
-                print(r)
+                # print(r)
                 items = choice(r["items"])
                 v_id = items["id"]["videoId"]
                 v_title = items["snippet"]["title"]
