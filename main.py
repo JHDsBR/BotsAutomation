@@ -8,6 +8,7 @@ import Download
 import Utils
 import Notify
 import requests as rq
+from Session import BotSession
 
 #! REVISADO
 #! REVISADO
@@ -49,7 +50,7 @@ while not uploaded:
 
 Notify.SendEmail("VIDEO UPLOADED", uploaded[1])
 
-Utils.Start(uploaded[0])
+Utils.Start(uploaded[0], BotSession)
 
 
 

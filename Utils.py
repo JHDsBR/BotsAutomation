@@ -5,7 +5,7 @@ from constants import *
 from random import sample
 from time import sleep
 import requests as rq
-from Session import BotSession
+# from Session import BotSession
 
 #! REVISADO
 #! REVISADO
@@ -65,7 +65,7 @@ def Request(session, url, method="GET", retry=10, body={}, headers={}):
     return res
         
 
-def Start(video_id_):
+def Start(video_id_, BotSession):
     global video_id, comments_id
     video_id = str(video_id_)
     bots = rq.get(env["MY_API_URL"]).json()
