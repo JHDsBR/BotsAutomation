@@ -3,7 +3,8 @@ import os
 from constants import *
 from Driver import *
 import Notify
-from Utils import *
+from Utils import Wait, Write
+# from Utils import *
 
 #! REVISADO
 #! REVISADO
