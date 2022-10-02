@@ -32,6 +32,9 @@ for c in range(20):
 # download do vídeo
 title = Download.Video()
 
+if not title:
+    exit()
+
 # upload do vídeo
 uploaded = False
 while not uploaded:
