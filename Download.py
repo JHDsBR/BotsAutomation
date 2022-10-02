@@ -37,8 +37,8 @@ def Video() -> str:
                 v_id = items["id"]["videoId"]
                 v_title = items["snippet"]["title"]
                 link = f"https://www.youtube.com/watch?v={v_id}"
-            except:
-                print("erro na hora de pegar um link")
+            except Exception as e:
+                print("erro na hora de pegar um link ->", str(e))
                 
     print("vídeo baixado")
     return str(v_title)
