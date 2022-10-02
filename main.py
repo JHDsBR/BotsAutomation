@@ -16,10 +16,17 @@ import requests as rq
 # download do chromedriver
 for c in range(20):
     try:
-        Download.Driver()
+        Download.Driver(version)
         break
-    except:
-        sleep(60)
+    except Exception as e:
+        version = None
+        if "version of ChromeDriver only supports Chrome version" in str(e):
+            for c in str(e).split():
+                if c.count(".") >= 2:
+                    version = c.split(".")[0]
+                    break
+        else:
+            sleep(10)
 
 # download do vídeo
 title = Download.Video()
@@ -34,7 +41,9 @@ while not uploaded:
         Notify.SendEmail("BOT NOT FOUND", "Não foi possível encontrar um bot para fazer o upload do vídeo.")
         exit()
 
-    rq.post(MY_API_URL_UPDATE, json={"id":int(bot['id'])})
+    # rq.post(MY_API_URL_UPDATE, json={"id":int(bot['id'])})        
+    Utils.Request(rq, MY_API_URL_UPDATE, "POST", body={"id":int(bot['id'])})
+
     # fica tentando postar o vídeo até conseguir
     uploaded = StartUploadVideo(bot=bot,title=title)
 

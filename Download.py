@@ -2,12 +2,14 @@
 from http.client import IncompleteRead
 from random import choice
 from pytube import YouTube
+from Utils import Request
 from YoutubeAPI import Search
 
 import requests
 import wget
 import zipfile
 import os
+import xmltodict
 
 #! REVISADO
 #! REVISADO
@@ -42,17 +44,40 @@ def Video() -> str:
     return str(v_title)
 
 
-def Driver() -> None:
+def Driver(version=None) -> None:
+
     # get the latest chrome driver version number
     url = 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE'
-    response = requests.get(url)
+    # url = 'https://chromedriver.storage.googleapis.com/'
+    # response = requests.get(url)
+    response = Request(requests, url)
+
+    # print(xmltodict.parse(response))
+    # exit()
+    if not response:
+        return
+
     version_number = response.text
+
+    if version:
+        url = 'https://chromedriver.storage.googleapis.com/'
+        response = Request(requests, url)
+
+        data = xmltodict.parse(response.text)
+
+        # print(str(data["ListBucketResult"]["Contents"])[:1000])
+        for c in data["ListBucketResult"]["Contents"]:
+            if str(version) in c["Key"] and "chromedriver_win32.zip" in c["Key"]:
+                version_number = c["Key"].split("/")[0]
+
+    # download_url = "https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_win32.zip"
+    # download the zip file using the url built above
 
     # build the donwload url
     download_url = "https://chromedriver.storage.googleapis.com/" + version_number +"/chromedriver_win32.zip"
-    download_url = "https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_win32.zip"
-    # download the zip file using the url built above
+
     latest_driver_zip = wget.download(download_url,'chromedriver.zip')
+
 
     # extract the zip file
     with zipfile.ZipFile(latest_driver_zip, 'r') as zip_ref:

@@ -3,6 +3,7 @@ import json
 import datetime
 from constants import API_URL
 from os import environ as env
+from Utils import Request
 
 #! REVISADO
 #! REVISADO
@@ -18,22 +19,27 @@ class BotSession():
 
     def Login(self):
         
-        res = self.session.get(f"{env['MY_API_URL']}/{self.id}")
-        
-        if(res.status_code != 200):
+        res = Request(self.session, f"{env['MY_API_URL']}/{self.id}")
+
+        if not res:
+            return False
+
+        if res.status_code != 200:
             return False
 
         for cok in json.loads(res.json()["cookie"]):
             self.session.cookies.set(cok["name"], cok["value"], domain=env["DOMINIO"])
+
         
         # é bom implementar uma verificação de login bem sucedido
         
 
     # necessário fazer login antes
     def GetTokenCSRF(self):
-        data = self.session.get(env["URL_API_TOKEN"]).json()
+        data = Request(self.session, env["URL_API_TOKEN"])
+
         try:
-            return data["data"]["token"]
+            return data.json()["data"]["token"]
         except Exception as e:
             print("Error ->", e)
             print(data)
@@ -41,7 +47,12 @@ class BotSession():
 
 
     def GetAuth(self, body):
-        return rq.get(env["URL_API_AUTH"], json=body).json()
+        data = Request(rq, env["URL_API_AUTH"], body=body)
+        
+        if not data:
+            return ""
+        
+        return data.json()
 
 
     def Like(self, post_id:str):
@@ -58,9 +69,12 @@ class BotSession():
         # return
  
         
-        res = self.session.post(API_URL.LIKE, json=body, headers=headers)
+        # res = self.session.post(API_URL.LIKE, json=body, headers=headers)
         
+        res = Request(self.session, API_URL.LIKE, "POST", body=body, headers=headers)
         # print(res.text)
+        if not res:
+            return False, res
         ok = "success" in res.text.lower()
         if not ok:
             print(res.text)
@@ -81,8 +95,11 @@ class BotSession():
 
         headers = self.Headers(body)
         # return
-        res = self.session.post(API_URL.COMMENT, json=body, headers=headers)
+        # res = self.session.post(API_URL.COMMENT, json=body, headers=headers)
+        res = Request(self.session, API_URL.COMMENT, "POST", body=body, headers=headers)
         
+        if not res:
+            return
         # print(res.text)
 
         if("success" in res.text.lower()):

@@ -51,6 +51,20 @@ def GetBotToUploadVideo(randomly:bool=False):
                 return bot
             bots.remove(bot)
 
+def Request(session, url, method="GET", retry=10, body={}, headers={}):
+    res = None
+    for c in range(retry):
+        try:
+            if method.upper() == "POST":
+                res = session.post(url, json=body, headers=headers)
+            else: 
+                res = session.get(url, json=body)
+        except:
+            pass
+    
+    return res
+        
+
 def Start(video_id_):
     global video_id, comments_id
     video_id = str(video_id_)
