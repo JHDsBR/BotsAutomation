@@ -1,11 +1,11 @@
 import random
 from time import sleep
 import requests
-from Session import BotSession
 from constants import *
 from random import sample
 from time import sleep
 import requests as rq
+from Session import BotSession
 
 #! REVISADO
 #! REVISADO
