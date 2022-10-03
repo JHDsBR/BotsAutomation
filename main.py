@@ -9,6 +9,7 @@ import Utils
 import Notify
 import requests as rq
 from Session import BotSession
+import Driver as Driver_
 
 #! REVISADO
 #! REVISADO
@@ -18,6 +19,12 @@ from Session import BotSession
 for c in range(20):
     try:
         Download.Driver(version)
+        
+        # testar o driver
+        d = Driver_.CreateDriver()
+        d.get("https://www.google.com/")
+        d.quit()
+        
         break
     except Exception as e:
         version = None
