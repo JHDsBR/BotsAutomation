@@ -57,8 +57,8 @@ def Driver(version=None) -> None:
     # get the latest chrome driver version number
     url = 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE'
     # url = 'https://chromedriver.storage.googleapis.com/'
-    # response = requests.get(url)
-    response = Request(requests, url)
+    response = requests.get(url)
+    # response = Request(requests, url)
 
     # print(xmltodict.parse(response))
     # exit()
@@ -68,16 +68,19 @@ def Driver(version=None) -> None:
     version_number = response.text
 
     if version:
+        print("Baixando versão específica")
         url = 'https://chromedriver.storage.googleapis.com/'
-        response = Request(requests, url)
+        # response = Request(requests, url)
+        response = requests.get(url)
+        
 
         data = xmltodict.parse(response.text)
 
         # print(str(data["ListBucketResult"]["Contents"])[:1000])
         for c in data["ListBucketResult"]["Contents"]:
-            if str(version) in c["Key"] and "chromedriver_win32.zip" in c["Key"]:
+            if str(version) in c["Key"][:len(str(version))] and "chromedriver_win32.zip" in c["Key"]:
                 version_number = c["Key"].split("/")[0]
-
+        print("Versão ->",version_number)
     # download_url = "https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_win32.zip"
     # download the zip file using the url built above
 
@@ -92,3 +95,10 @@ def Driver(version=None) -> None:
         zip_ref.extractall() # you can specify the destination folder path here
     # delete the zip file downloaded above
     os.remove(latest_driver_zip)
+
+# Driver(105)
+
+
+
+# driver = Driver_.CreateDriver()
+# driver.get("https://www.google.com/")
