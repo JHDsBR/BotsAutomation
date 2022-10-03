@@ -59,7 +59,11 @@ def Request(session, url, method="GET", retry=10, body={}, headers={}):
                 res = session.post(url, json=body, headers=headers)
             else: 
                 res = session.get(url, json=body)
-        except:
+            break
+        except Exception as e:
+            print()
+            print(e)
+            print()
             pass
     
     return res
