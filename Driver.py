@@ -27,11 +27,7 @@ def CreateDriver():
     chrome_options.add_argument("--output=/dev/null")
     chrome_options.add_argument("--no-sandbox")
     print(3.2)
-    try:
-        d = Chrome(executable_path='./chromedriver', options=chrome_options)
-    except Exception as e:
-        print(e)
-        a = 1/0
+    d = Chrome(executable_path='./chromedriver', options=chrome_options)
     print(3.3)
     d.set_window_size(int(1920/1.25), int(1080/1.25))
     print(3.4)
