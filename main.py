@@ -22,11 +22,16 @@ for c in range(20):
     except Exception as e:
         version = None
         if "version of ChromeDriver only supports Chrome version" in str(e):
+            print("Deu erro de versão")
             for c in str(e).split():
+                print(c)
+                print(c.count("."))
                 if c.count(".") >= 2:
                     version = c.split(".")[0]
+                    print(version)
                     break
         else:
+            print("Não deu erro de versão")
             sleep(10)
 
 # download do vídeo
