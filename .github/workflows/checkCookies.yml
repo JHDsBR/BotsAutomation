@@ -1,17 +1,17 @@
-name: BOTS
+name:  CHECK COOKIES
 
 on:
-  # push:
-  #   branches: [ "master" ]
+  push:
+    branches: [ "master" ]
   # pull_request:
     # branches: [ "master" ]
-  schedule: # execute every day at 9am utc (6am rio tinto)
-    - cron: "0 9 * * *"
+  schedule: # execute every day at 23pm utc (20pm rio tinto)
+    - cron: "0 23 * * *"
 
   workflow_dispatch:
 
 jobs:
-  INICIAR-BOTS:
+  INICIAR-CHECAGEM:
     runs-on: windows-latest
     environment: env  # THIS WAS MISSING
     steps:
@@ -30,17 +30,10 @@ jobs:
           GMAIL_FROM: ${{secrets.GMAIL_FROM}}
           GMAIL_FROM_PASSWORD: ${{secrets.GMAIL_FROM_PASSWORD}}
           GMAIL_TO: ${{secrets.GMAIL_TO}}
-          DOMINIO: ${{secrets.DOMINIO}}
-          URL_API_LIKE: ${{secrets.URL_API_LIKE}}
-          URL_API_COMMENT: ${{secrets.URL_API_COMMENT}}
           MY_API_URL: ${{secrets.MY_API_URL}}
-          MY_API_URL_UPDATE: ${{secrets.MY_API_URL_UPDATE}}
-          MY_YT_API_KEY: ${{secrets.MY_YT_API_KEY}}
-          URL_API_AUTH: ${{secrets.URL_API_AUTH}}
-          URL_API_TOKEN: ${{secrets.URL_API_TOKEN}}
         run: |
           pip install -r requirements.txt
-          python main.py
+          python checkCookies.py
       # - name: setup node js
       #   uses: actions/setup-node@v3
       #   with:
