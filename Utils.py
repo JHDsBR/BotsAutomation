@@ -62,6 +62,8 @@ def Request(session, url, method="GET", retry=10, body=None, headers=None):
                     res = session.post(url, headers=headers)
                 elif not headers and not body:
                     res = session.post(url)
+                else:
+                    res = session.post(url, json=body, headers=headers)
             else: 
                 if body:
                     res = session.get(url, json=body)
