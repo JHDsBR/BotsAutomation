@@ -51,14 +51,22 @@ def GetBotToUploadVideo(randomly:bool=False):
                 return bot
             bots.remove(bot)
 
-def Request(session, url, method="GET", retry=10, body={}, headers={}):
+def Request(session, url, method="GET", retry=10, body=None, headers=None):
     res = None
     for c in range(retry):
         try:
             if method.upper() == "POST":
-                res = session.post(url, json=body, headers=headers)
+                if body and not headers:
+                    res = session.post(url, json=body)
+                elif headers and not body: 
+                    res = session.post(url, headers=headers)
+                elif not headers and not body:
+                    res = session.post(url)
             else: 
-                res = session.get(url, json=body)
+                if body:
+                    res = session.get(url, json=body)
+                else:
+                    res = session.get(url)
             break
         except Exception as e:
             print()

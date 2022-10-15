@@ -1,3 +1,4 @@
+# import loadEnv
 import requests as rq
 import json
 import datetime
@@ -37,7 +38,7 @@ class BotSession():
     # necessário fazer login antes
     def GetTokenCSRF(self):
         data = Request(self.session, env["URL_API_TOKEN"])
-
+        print(env["URL_API_TOKEN"])
         try:
             return data.json()["data"]["token"]
         except Exception as e:
@@ -114,4 +115,5 @@ class BotSession():
 
     def Close(self):
         self.session.close()
+
 
